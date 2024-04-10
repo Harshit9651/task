@@ -29,7 +29,7 @@ form {
     display: block;
     font-weight: bold;
 }
-
+input[type="tel"],
 input[type="text"],
 input[type="email"] {
     width: 100%;
@@ -73,6 +73,61 @@ table th {
     background-color: #f2f2f2;
 }
 
+/*-------Search bar -------*/
+.search-bar {
+    position: relative;
+    margin-bottom: 20px; /* Adjust as needed */
+}
+
+.search-bar input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    outline: none; /* Remove default outline */
+}
+
+.search-bar input[type="text"]:focus {
+    border-color: goldenrod; /* Change border color when focused */
+}
+
+/* Style the search icon */
+.search-bar input[type="text"]::placeholder {
+    color: #aaa; /* Placeholder text color */
+}
+
+.search-bar input[type="text"]::-webkit-input-placeholder {
+    color: #aaa; /* Placeholder text color for WebKit browsers */
+}
+
+.search-bar input[type="text"]::-moz-placeholder {
+    color: #aaa; /* Placeholder text color for Firefox */
+}
+
+.search-bar input[type="text"]:-ms-input-placeholder {
+    color: #aaa; /* Placeholder text color for IE */
+}
+
+/* Style the search icon */
+.search-bar::after {
+    content: '\1F50D'; /* Unicode for search icon */
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    font-size: 16px;
+    color: #aaa;
+}
+
+/* Adjust icon color on focus */
+.search-bar input[type="text"]:focus + ::after {
+    color: goldenrod;
+}
+
+
+
+
 /* Responsive styles */
 @media (max-width: 768px) {
     .container {
@@ -80,6 +135,7 @@ table th {
     }
 
     input[type="text"],
+    input[type="tel"],
     input[type="email"],
     button {
         padding: 8px 16px;
@@ -88,6 +144,7 @@ table th {
 
 @media (max-width: 576px) {
     input[type="text"],
+    input[type="tel"],
     input[type="email"],
     button {
         width: 100%;
