@@ -90,28 +90,11 @@ table th {
 
 .search-bar input[type="text"]:focus {
     border-color: goldenrod; /* Change border color when focused */
+    border: 1rem;
 }
-
-/* Style the search icon */
-.search-bar input[type="text"]::placeholder {
-    color: #aaa; /* Placeholder text color */
-}
-
-.search-bar input[type="text"]::-webkit-input-placeholder {
-    color: #aaa; /* Placeholder text color for WebKit browsers */
-}
-
-.search-bar input[type="text"]::-moz-placeholder {
-    color: #aaa; /* Placeholder text color for Firefox */
-}
-
-.search-bar input[type="text"]:-ms-input-placeholder {
-    color: #aaa; /* Placeholder text color for IE */
-}
-
 /* Style the search icon */
 .search-bar::after {
-    content: '\1F50D'; /* Unicode for search icon */
+    content: '\1F50D';
     position: absolute;
     top: 50%;
     right: 10px;
