@@ -9,14 +9,14 @@ document.addEventListener('DOMContentLoaded', function () {
         e.preventDefault(); // Prevent the default form submission behavior
         
         // Get inpuuts
-        const name = document.getElementById('name').value;
+        const namee = document.getElementById('name').value;
         const mobile = document.getElementById('mobile').value;
         const email = document.getElementById('email').value;
 
         // Check if all fields are filled
-        if (name && mobile && email) {
+        if (namee && mobile && email) {
             // If all fields are filled, add user to the table
-            addUserToTable(name, mobile, email);
+            addUserToTable(namee, mobile, email);
             clearForm(); // Clear the form fields
         } else {
             // If any field is empty, show an alert 
