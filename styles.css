@@ -72,3 +72,24 @@ table th, table td {
 table th {
     background-color: #f2f2f2;
 }
+
+/* Responsive styles */
+@media (max-width: 768px) {
+    .container {
+        padding: 10px;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    button {
+        padding: 8px 16px;
+    }
+}
+
+@media (max-width: 576px) {
+    input[type="text"],
+    input[type="email"],
+    button {
+        width: 100%;
+    }
+}
