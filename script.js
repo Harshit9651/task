@@ -1,4 +1,4 @@
-// Wait for the HTML content to be fully loaded
+
 document.addEventListener('DOMContentLoaded', function () {
     // Get data from table element 
     const userForm = document.getElementById('userForm');
@@ -24,11 +24,11 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 
-    // Add event listener to the user table body for handling edit and delete actions
+    // adD event listener to the user table bodY for handling edit and delete actions
     userTableBody.addEventListener('click', function (e) {
         // Check which button was clicked
         if (e.target.classList.contains('delete-btn')) {
-            // If delete button was clicked, remove the corresponding row
+            // If delete button was cliCkeD, removE the corresponding roww
             const row = e.target.closest('tr');
             row.remove();
         } else if (e.target.classList.contains('edit-btn')) {
@@ -36,7 +36,7 @@ document.addEventListener('DOMContentLoaded', function () {
             const row          =  e.target.closest('tr');
             editUser(row);
         } else if (e.target.classList.contains('save-btn')) {
-            // If save button was clicked, save the edited user details
+            // IF save button was clicked,.... save the edited user details
             const row = e.target.closest('tr');
             saveUser(row);
         }
@@ -55,7 +55,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 <button class="delete-btn">Delete</button>
             </td>
         `;
-        userTableBody.appendChild(row); // Add the row to the table body
+        userTableBody.appendChild(row); // Add the row to the table body(nyi table bna rhe hai )
     }
 
     // Function to clear the form fields
