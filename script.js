@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', function () {
     const userForm = document.getElementById('userForm');
     const userTableBody = document.getElementById('userTableBody');
-
+    const searchInput = document.getElementById('searchInput');
     userForm.addEventListener('submit', function (e) {
         e.preventDefault();
         
@@ -71,28 +71,69 @@ document.addEventListener('DOMContentLoaded', function () {
             saveUser(row);
         }
     });
-
+    
     function editUser(row) {
         const cells = row.querySelectorAll('td');
-        const name = cells[0].innerText;
-        const mobile = cells[1].innerText;
+        let name = cells[0].innerText;
+        let mobile = cells[1].innerText;
         const email = cells[2].innerText;
-
+    
+        // Remove special characters from the name
+        name = name.replace(/[^a-zA-Z ]/g, '');
+    
+        // Keep only the first 10 digits in the mobile number
+        mobile = mobile.replace(/\D/g, '').slice(0, 10);
+    
         cells[0].innerHTML = `<input type="text" value="${name}">`;
         cells[1].innerHTML = `<input type="text" value="${mobile}">`;
         cells[2].innerHTML = `<input type="email" value="${email}">`;
-
+    
         const editBtn = row.querySelector('.edit-btn');
         editBtn.innerText = 'Save';
         editBtn.classList.remove('edit-btn');
         editBtn.classList.add('save-btn');
     }
-
+//new upadte for add credantials 
     function saveUser(row) {
         const cells = row.querySelectorAll('td');
-        const name = cells[0].querySelector('input').value;
-        const mobile = cells[1].querySelector('input').value;
-        const email = cells[2].querySelector('input').value;
+        const nameInput = cells[0].querySelector('input');
+        const mobileInput = cells[1].querySelector('input');
+        const emailInput = cells[2].querySelector('input');
+
+        const name = nameInput.value.trim(); // Trim removes leading and trailing whitespaces
+        const mobile = mobileInput.value.trim();
+        const email = emailInput.value.trim();
+
+        if (!name) {
+            alert('Please enter a name.');
+            return;
+        }
+
+        if (!validateName(name)) {
+            alert('Please enter a valid name without special characters.');
+            return;
+        }
+
+        if (!mobile) {
+            alert('Please enter a mobile number.');
+            return;
+        }
+
+        if (!validateMobile(mobile)) {
+            alert('Please enter a valid mobile number with exactly 10 digits.');
+            return;
+        }
+
+        if (!email) {
+            alert('Please enter an email address.');
+            return;
+        }
+        if (!email.includes('@')) {
+            alert('Please enter a valid email address.');
+            return;
+        }
+
+        // You can add further email validation logic here if needed
 
         cells[0].innerHTML = name;
         cells[1].innerHTML = mobile;
@@ -106,18 +147,22 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 
-
-    // Add event listener for search input
+    // Event listener for input in the search bar
     searchInput.addEventListener('input', function () {
-        const searchTerm = searchInput.value.toLowerCase();
+        const searchTerm = searchInput.value.trim().toLowerCase();
         const rows = userTableBody.querySelectorAll('tr');
 
         rows.forEach(row => {
-            const name = row.querySelector('td:first-child').innerText.toLowerCase();
-            if (name.includes(searchTerm)) {
-                row.style.display = '';
+            const name = row.querySelector('td:nth-child(1)').innerText.toLowerCase();
+            const mobile = row.querySelector('td:nth-child(2)').innerText.toLowerCase();
+            const email = row.querySelector('td:nth-child(3)').innerText.toLowerCase();
+            
+            // Check if any column matches the search term
+            if (name.includes(searchTerm) || mobile.includes(searchTerm) || email.includes(searchTerm)) {
+                row.style.display = ''; // Show the row if there's a match
             } else {
-                row.style.display = 'none';
+                row.style.display = 'none'; // Hide the row if there's no match
             }
         });
     });
+
