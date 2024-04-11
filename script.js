@@ -146,8 +146,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 });
 
-
-    // Event listener for input in the search bar
+//search bar code 
     searchInput.addEventListener('input', function () {
         const searchTerm = searchInput.value.trim().toLowerCase();
         const rows = userTableBody.querySelectorAll('tr');
